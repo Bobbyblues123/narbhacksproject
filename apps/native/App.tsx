@@ -3,6 +3,7 @@ import { LogBox, Platform, StatusBar, View } from "react-native";
 import ConvexClientProvider from "./ConvexClientProvider";
 import LocationDisplay from "./src/components/LocationDisplay";
 import Navigation from "./src/navigation/Navigation";
+import { ThemeProvider } from "./src/theme/ThemeContext";
 
 export default function App() {
   LogBox.ignoreLogs(["Warning: ..."]);
@@ -29,19 +30,21 @@ export default function App() {
 
   return (
     <ConvexClientProvider>
-      <View style={{ flex: 1 }}>
-        <View style={{ height: STATUS_BAR_HEIGHT, backgroundColor: "#0D87E1" }}>
-          <StatusBar
-            translucent
-            backgroundColor={"#0D87E1"}
-            barStyle="light-content"
-          />
-        </View>
-        <LocationDisplay style={{ margin: 10, marginBottom: 5 }} />
+      <ThemeProvider>
         <View style={{ flex: 1 }}>
-          <Navigation />
+          <View style={{ height: STATUS_BAR_HEIGHT, backgroundColor: "#0D87E1" }}>
+            <StatusBar
+              translucent
+              backgroundColor={"#0D87E1"}
+              barStyle="light-content"
+            />
+          </View>
+          <LocationDisplay style={{ margin: 10, marginBottom: 5 }} />
+          <View style={{ flex: 1 }}>
+            <Navigation />
+          </View>
         </View>
-      </View>
+      </ThemeProvider>
     </ConvexClientProvider>
   );
 }

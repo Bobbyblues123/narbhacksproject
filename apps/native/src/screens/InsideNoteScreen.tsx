@@ -7,6 +7,7 @@ import {
   Text,
   TouchableOpacity,
   View,
+  Alert,
 } from "react-native";
 import { RFValue } from "react-native-responsive-fontsize";
 
@@ -207,5 +208,28 @@ const styles = StyleSheet.create({
   },
   inactiveTabText: {
     color: "#000",
+  },
+  addToCalendarButton: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "#0D87E1",
+    borderRadius: 8,
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    marginTop: 24,
+    alignSelf: "center",
+  },
+  addToCalendarIcon: {
+    width: 22,
+    height: 22,
+    marginRight: 8,
+    tintColor: "#fff",
+    resizeMode: "contain",
+  },
+  addToCalendarText: {
+    color: "#fff",
+    fontSize: RFValue(15),
+    fontFamily: "MMedium",
   },
 });

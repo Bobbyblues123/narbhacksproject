@@ -32,6 +32,9 @@ importers:
       '@packages/backend':
         specifier: '*'
         version: link:../../packages/backend
+      '@react-native-community/datetimepicker':
+        specifier: ^8.4.2
+        version: 8.4.2(expo@52.0.47(@babel/core@7.28.0)(@babel/preset-env@7.28.0(@babel/core@7.28.0))(react-native-webview@13.12.5(react-native@0.76.9(@babel/core@7.28.0)(@babel/preset-env@7.28.0(@babel/core@7.28.0))(@types/react@19.0.14)(react@18.3.1))(react@18.3.1))(react-native@0.76.9(@babel/core@7.28.0)(@babel/preset-env@7.28.0(@babel/core@7.28.0))(@types/react@19.0.14)(react@18.3.1))(react@18.3.1))(react-native@0.76.9(@babel/core@7.28.0)(@babel/preset-env@7.28.0(@babel/core@7.28.0))(@types/react@19.0.14)(react@18.3.1))(react@18.3.1)
       '@react-native/virtualized-lists':
         specifier: ^0.76.9
         version: 0.76.9(@types/react@19.0.14)(react-native@0.76.9(@babel/core@7.28.0)(@babel/preset-env@7.28.0(@babel/core@7.28.0))(@types/react@19.0.14)(react@18.3.1))(react@18.3.1)
@@ -56,6 +59,9 @@ importers:
       expo-auth-session:
         specifier: ^6.0.3
         version: 6.0.3(expo@52.0.47(@babel/core@7.28.0)(@babel/preset-env@7.28.0(@babel/core@7.28.0))(react-native-webview@13.12.5(react-native@0.76.9(@babel/core@7.28.0)(@babel/preset-env@7.28.0(@babel/core@7.28.0))(@types/react@19.0.14)(react@18.3.1))(react@18.3.1))(react-native@0.76.9(@babel/core@7.28.0)(@babel/preset-env@7.28.0(@babel/core@7.28.0))(@types/react@19.0.14)(react@18.3.1))(react@18.3.1))(react-native@0.76.9(@babel/core@7.28.0)(@babel/preset-env@7.28.0(@babel/core@7.28.0))(@types/react@19.0.14)(react@18.3.1))(react@18.3.1)
+      expo-calendar:
+        specifier: ^14.1.4
+        version: 14.1.4(expo@52.0.47(@babel/core@7.28.0)(@babel/preset-env@7.28.0(@babel/core@7.28.0))(react-native-webview@13.12.5(react-native@0.76.9(@babel/core@7.28.0)(@babel/preset-env@7.28.0(@babel/core@7.28.0))(@types/react@19.0.14)(react@18.3.1))(react@18.3.1))(react-native@0.76.9(@babel/core@7.28.0)(@babel/preset-env@7.28.0(@babel/core@7.28.0))(@types/react@19.0.14)(react@18.3.1))(react@18.3.1))(react-native@0.76.9(@babel/core@7.28.0)(@babel/preset-env@7.28.0(@babel/core@7.28.0))(@types/react@19.0.14)(react@18.3.1))
       expo-constants:
         specifier: ^17.0.8
         version: 17.0.8(expo@52.0.47(@babel/core@7.28.0)(@babel/preset-env@7.28.0(@babel/core@7.28.0))(react-native-webview@13.12.5(react-native@0.76.9(@babel/core@7.28.0)(@babel/preset-env@7.28.0(@babel/core@7.28.0))(@types/react@19.0.14)(react@18.3.1))(react@18.3.1))(react-native@0.76.9(@babel/core@7.28.0)(@babel/preset-env@7.28.0(@babel/core@7.28.0))(@types/react@19.0.14)(react@18.3.1))(react@18.3.1))(react-native@0.76.9(@babel/core@7.28.0)(@babel/preset-env@7.28.0(@babel/core@7.28.0))(@types/react@19.0.14)(react@18.3.1))
@@ -223,6 +229,9 @@ importers:
 
   packages/backend:
     dependencies:
+      '@anthropic-ai/sdk':
+        specifier: ^0.57.0
+        version: 0.57.0
       convex:
         specifier: ^1.25.0
         version: 1.25.2(@clerk/clerk-react@5.32.4(react-dom@19.0.0(react@19.0.0))(react@19.0.0))(react@19.0.0)
@@ -254,6 +263,10 @@ packages:
   '@ampproject/remapping@2.3.0':
     resolution: {integrity: sha512-30iZtAPgz+LTIYoeivqYo853f02jBYSd5uGnGpkFV0M3xOt9aN73erkgYAmZU43x4VfqcnLxW9Kpg3R5LC4YYw==}
     engines: {node: '>=6.0.0'}
+
+  '@anthropic-ai/sdk@0.57.0':
+    resolution: {integrity: sha512-z5LMy0MWu0+w2hflUgj4RlJr1R+0BxKXL7ldXTO8FasU8fu599STghO+QKwId2dAD0d464aHtU+ChWuRHw4FNw==}
+    hasBin: true
 
   '@babel/code-frame@7.10.4':
     resolution: {integrity: sha512-vG6SvB6oYEhvgisZNFRmRCUkLz11c7rp+tbNTynGqc6mS1d5ATd/sGyV6W0KZZnXRKMTzZDRgQT3Ou9jhpAfUg==}
@@ -2089,6 +2102,19 @@ packages:
       react: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0-rc.1
       react-dom: ^16.8.0 || ^17.0.0-rc.1 || ^18.0.0 || ^19.0.0-rc.1
 
+  '@react-native-community/datetimepicker@8.4.2':
+    resolution: {integrity: sha512-V/s+foBfjlWGV8MKdMhxugq0SPMtYqUEYlf+sMrKUUm5Gx3pA9Qoum2ZQUqBfI4A8kgaEPIGyG/YsNX7ycnNSA==}
+    peerDependencies:
+      expo: '>=52.0.0'
+      react: '*'
+      react-native: '*'
+      react-native-windows: '*'
+    peerDependenciesMeta:
+      expo:
+        optional: true
+      react-native-windows:
+        optional: true
+
   '@react-native/assets-registry@0.76.9':
     resolution: {integrity: sha512-pN0Ws5xsjWOZ8P37efh0jqHHQmq+oNGKT4AyAoKRpxBDDDmlAmpaYjer9Qz7PpDKF+IUyRjF/+rBsM50a8JcUg==}
     engines: {node: '>=18'}
@@ -3773,6 +3799,12 @@ packages:
     resolution: {integrity: sha512-s7LmmMPiiY1NXrlcXkc4+09Hlfw9X1CpaQOCDkwfQEodG1uCYGQi/WImTnDzw5YDkWI79uC8F1mB8EIerilkDA==}
     peerDependencies:
       react: '*'
+      react-native: '*'
+
+  expo-calendar@14.1.4:
+    resolution: {integrity: sha512-4h23qUBqQNIvLsx2FfL6DcmxgZvhCbMqUN55UQIiBeHlCnyrcNu6Fo9c179aWsgh35nbD+mntt1AaEOplHTzeg==}
+    peerDependencies:
+      expo: '*'
       react-native: '*'
 
   expo-constants@17.0.8:
@@ -6801,6 +6833,8 @@ snapshots:
       '@jridgewell/gen-mapping': 0.3.12
       '@jridgewell/trace-mapping': 0.3.29
 
+  '@anthropic-ai/sdk@0.57.0': {}
+
   '@babel/code-frame@7.10.4':
     dependencies:
       '@babel/highlight': 7.25.9
@@ -9060,6 +9094,14 @@ snapshots:
       react: 19.0.0
       react-dom: 19.0.0(react@19.0.0)
 
+  '@react-native-community/datetimepicker@8.4.2(expo@52.0.47(@babel/core@7.28.0)(@babel/preset-env@7.28.0(@babel/core@7.28.0))(react-native-webview@13.12.5(react-native@0.76.9(@babel/core@7.28.0)(@babel/preset-env@7.28.0(@babel/core@7.28.0))(@types/react@19.0.14)(react@18.3.1))(react@18.3.1))(react-native@0.76.9(@babel/core@7.28.0)(@babel/preset-env@7.28.0(@babel/core@7.28.0))(@types/react@19.0.14)(react@18.3.1))(react@18.3.1))(react-native@0.76.9(@babel/core@7.28.0)(@babel/preset-env@7.28.0(@babel/core@7.28.0))(@types/react@19.0.14)(react@18.3.1))(react@18.3.1)':
+    dependencies:
+      invariant: 2.2.4
+      react: 18.3.1
+      react-native: 0.76.9(@babel/core@7.28.0)(@babel/preset-env@7.28.0(@babel/core@7.28.0))(@types/react@19.0.14)(react@18.3.1)
+    optionalDependencies:
+      expo: 52.0.47(@babel/core@7.28.0)(@babel/preset-env@7.28.0(@babel/core@7.28.0))(react-native-webview@13.12.5(react-native@0.76.9(@babel/core@7.28.0)(@babel/preset-env@7.28.0(@babel/core@7.28.0))(@types/react@19.0.14)(react@18.3.1))(react@18.3.1))(react-native@0.76.9(@babel/core@7.28.0)(@babel/preset-env@7.28.0(@babel/core@7.28.0))(@types/react@19.0.14)(react@18.3.1))(react@18.3.1)
+
   '@react-native/assets-registry@0.76.9': {}
 
   '@react-native/babel-plugin-codegen@0.76.9(@babel/preset-env@7.28.0(@babel/core@7.28.0))':
@@ -11097,6 +11139,11 @@ snapshots:
     transitivePeerDependencies:
       - expo
       - supports-color
+
+  expo-calendar@14.1.4(expo@52.0.47(@babel/core@7.28.0)(@babel/preset-env@7.28.0(@babel/core@7.28.0))(react-native-webview@13.12.5(react-native@0.76.9(@babel/core@7.28.0)(@babel/preset-env@7.28.0(@babel/core@7.28.0))(@types/react@19.0.14)(react@18.3.1))(react@18.3.1))(react-native@0.76.9(@babel/core@7.28.0)(@babel/preset-env@7.28.0(@babel/core@7.28.0))(@types/react@19.0.14)(react@18.3.1))(react@18.3.1))(react-native@0.76.9(@babel/core@7.28.0)(@babel/preset-env@7.28.0(@babel/core@7.28.0))(@types/react@19.0.14)(react@18.3.1)):
+    dependencies:
+      expo: 52.0.47(@babel/core@7.28.0)(@babel/preset-env@7.28.0(@babel/core@7.28.0))(react-native-webview@13.12.5(react-native@0.76.9(@babel/core@7.28.0)(@babel/preset-env@7.28.0(@babel/core@7.28.0))(@types/react@19.0.14)(react@18.3.1))(react@18.3.1))(react-native@0.76.9(@babel/core@7.28.0)(@babel/preset-env@7.28.0(@babel/core@7.28.0))(@types/react@19.0.14)(react@18.3.1))(react@18.3.1)
+      react-native: 0.76.9(@babel/core@7.28.0)(@babel/preset-env@7.28.0(@babel/core@7.28.0))(@types/react@19.0.14)(react@18.3.1)
 
   expo-constants@17.0.8(expo@52.0.47(@babel/core@7.28.0)(@babel/preset-env@7.28.0(@babel/core@7.28.0))(react-native-webview@13.12.5(react-native@0.76.9(@babel/core@7.28.0)(@babel/preset-env@7.28.0(@babel/core@7.28.0))(@types/react@19.0.14)(react@18.3.1))(react@18.3.1))(react-native@0.76.9(@babel/core@7.28.0)(@babel/preset-env@7.28.0(@babel/core@7.28.0))(@types/react@19.0.14)(react@18.3.1))(react@18.3.1))(react-native@0.76.9(@babel/core@7.28.0)(@babel/preset-env@7.28.0(@babel/core@7.28.0))(@types/react@19.0.14)(react@18.3.1)):
     dependencies:

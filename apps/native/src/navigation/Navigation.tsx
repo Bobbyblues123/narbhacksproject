@@ -4,6 +4,9 @@ import CreateNoteScreen from "../screens/CreateNoteScreen";
 import InsideNoteScreen from "../screens/InsideNoteScreen";
 import LoginScreen from "../screens/LoginScreen";
 import NotesDashboardScreen from "../screens/NotesDashboardScreen";
+import SettingsScreen from "../screens/SettingsScreen";
+import TopicsScreen from "../screens/TopicsScreen";
+import ProblemsScreen from "../screens/ProblemsScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -22,6 +25,9 @@ const Navigation = () => {
         />
         <Stack.Screen name="InsideNoteScreen" component={InsideNoteScreen} />
         <Stack.Screen name="CreateNoteScreen" component={CreateNoteScreen} />
+        <Stack.Screen name="SettingsScreen" component={SettingsScreen} />
+        <Stack.Screen name="TopicsScreen" component={TopicsScreen} />
+        <Stack.Screen name="ProblemsScreen" component={ProblemsScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

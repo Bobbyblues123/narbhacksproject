@@ -1,8 +1,8 @@
 import { useUser } from "@clerk/clerk-expo";
-import { AntDesign, Feather } from "@expo/vector-icons";
+import { AntDesign, Feather, Ionicons } from "@expo/vector-icons";
 import { api } from "@packages/backend/convex/_generated/api";
 import { useQuery } from "convex/react";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import {
   Dimensions,
   FlatList,
@@ -14,11 +14,13 @@ import {
   View,
 } from "react-native";
 import { RFValue } from "react-native-responsive-fontsize";
+import { ThemeContext } from "../theme/ThemeContext";
 
 const NotesDashboardScreen = ({ navigation }) => {
   const user = useUser();
   const imageUrl = user?.user?.imageUrl;
   const firstName = user?.user?.firstName;
+  const { isDark } = useContext(ThemeContext);
 
   const allNotes = useQuery(api.notes.getNotes);
   const [search, setSearch] = useState("");
@@ -39,48 +41,60 @@ const NotesDashboardScreen = ({ navigation }) => {
         })
       }
       activeOpacity={0.5}
-      style={styles.noteItem}
+      style={[styles.noteItem, { backgroundColor: isDark ? "#2A2A2A" : "#F9FAFB" }]}
     >
-      <Text style={styles.noteText}>{item.title}</Text>
+      <Text style={[styles.noteText, { color: isDark ? "#fff" : "#2D2D2D" }]}>{item.title}</Text>
     </TouchableOpacity>
   );
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, { backgroundColor: isDark ? "#181818" : "white" }]}>
       <View style={styles.header}>
         <Image
-          source={require("../assets/icons/logo2small.png")} // Replace with your logo image file
+          source={require("../assets/icons/logo2small.png")}
           style={styles.logo}
         />
+        <TouchableOpacity
+          style={{ position: 'absolute', right: 16, top: 16 }}
+          onPress={() => navigation.navigate('SettingsScreen')}
+        >
+          <Ionicons name="settings-sharp" size={28} color="#fff" />
+        </TouchableOpacity>
       </View>
 
       <View style={styles.yourNotesContainer}>
-        {/* @ts-ignore, for css purposes */}
         <Image style={styles.avatarSmall} />
-        <Text style={styles.title}>Your Notes</Text>
+        <Text style={[styles.title, { color: isDark ? "#fff" : "#2D2D2D" }]}>Your Notes</Text>
         {imageUrl ? (
           <Image style={styles.avatarSmall} source={{ uri: imageUrl }} />
         ) : (
-          <Text>{firstName ? firstName : ""}</Text>
+          <Text style={{ color: isDark ? "#fff" : "#2D2D2D" }}>{firstName ? firstName : ""}</Text>
         )}
       </View>
-      <View style={styles.searchContainer}>
+      <View style={[styles.searchContainer, { 
+        borderColor: isDark ? "#444" : "grey",
+        backgroundColor: isDark ? "#2A2A2A" : "white"
+      }]}>
         <Feather
           name="search"
           size={20}
-          color="grey"
+          color={isDark ? "#888" : "grey"}
           style={styles.searchIcon}
         />
         <TextInput
           value={search}
           onChangeText={setSearch}
           placeholder="Search"
-          style={styles.searchInput}
+          placeholderTextColor={isDark ? "#888" : "#999"}
+          style={[styles.searchInput, { color: isDark ? "#fff" : "#2D2D2D" }]}
         />
       </View>
       {!finalNotes || finalNotes.length === 0 ? (
-        <View style={styles.emptyState}>
-          <Text style={styles.emptyStateText}>
+        <View style={[styles.emptyState, { 
+          backgroundColor: isDark ? "#2A2A2A" : "#F9FAFB",
+          borderColor: isDark ? "#444" : "rgba(0, 0, 0, 0.59)"
+        }]}>
+          <Text style={[styles.emptyStateText, { color: isDark ? "#888" : "grey" }]}>
             Create your first note to{"\n"}get started
           </Text>
         </View>
@@ -93,7 +107,7 @@ const NotesDashboardScreen = ({ navigation }) => {
           contentContainerStyle={{
             marginTop: 19,
             borderTopWidth: 0.5,
-            borderTopColor: "rgba(0, 0, 0, 0.59)",
+            borderTopColor: isDark ? "#444" : "rgba(0, 0, 0, 0.59)",
           }}
         />
       )}
@@ -105,6 +119,14 @@ const NotesDashboardScreen = ({ navigation }) => {
         <AntDesign name="pluscircle" size={20} color="#fff" />
         <Text style={styles.newNoteButtonText}>Create a New Note</Text>
       </TouchableOpacity>
+      
+      <TouchableOpacity
+        onPress={() => navigation.navigate("TopicsScreen")}
+        style={[styles.newNoteButton, styles.codingButton]}
+      >
+        <Ionicons name="code-slash" size={20} color="#fff" />
+        <Text style={styles.newNoteButtonText}>Coding Problems</Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -112,7 +134,6 @@ const NotesDashboardScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "white",
   },
   header: {
     backgroundColor: "#0D87E1",
@@ -147,7 +168,6 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     borderWidth: 1,
-    borderColor: "grey",
     borderRadius: 10,
     padding: 10,
     marginHorizontal: 15,
@@ -160,7 +180,6 @@ const styles = StyleSheet.create({
     flex: 1,
     fontSize: RFValue(15),
     fontFamily: "MRegular",
-    color: "#2D2D2D",
   },
   notesList: {
     flex: 1,
@@ -169,15 +188,11 @@ const styles = StyleSheet.create({
     padding: 20,
     borderBottomWidth: 0.5,
     borderBottomColor: "rgba(0, 0, 0, 0.59)",
-
-    backgroundColor: "#F9FAFB",
   },
   noteText: {
     fontSize: 16,
     fontFamily: "MLight",
-    color: "#2D2D2D",
   },
-
   newNoteButton: {
     flexDirection: "row",
     backgroundColor: "#0D87E1",
@@ -196,8 +211,11 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.27,
     shadowRadius: 4.65,
-
     elevation: 6,
+  },
+  codingButton: {
+    bottom: 95,
+    backgroundColor: "#FF6B35",
   },
   newNoteButtonText: {
     color: "white",
@@ -205,27 +223,19 @@ const styles = StyleSheet.create({
     fontFamily: "MMedium",
     marginLeft: 10,
   },
-  switchContainer: {
-    position: "absolute",
-    top: 20,
-    right: 20,
-  },
   emptyStateText: {
     textAlign: "center",
     alignSelf: "center",
     fontSize: RFValue(15),
-    color: "grey",
     fontFamily: "MLight",
   },
   emptyState: {
     width: "100%",
     height: "35%",
     marginTop: 19,
-    backgroundColor: "#F9FAFB",
     justifyContent: "center",
     alignItems: "center",
     borderWidth: 0.5,
-    borderColor: "rgba(0, 0, 0, 0.59)",
   },
 });
 
